@@ -1,0 +1,34 @@
+const scale = (num, in_min, in_max, out_min, out_max) => {
+  return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+};
+
+Parâmetros:
+
+num: o valor que você quer converter
+in_min, in_max: a faixa original (mínimo e máximo)
+out_min, out_max: a faixa de destino (mínimo e máximo)
+
+No contexto do relógio:
+
+Para os ponteiros das horas:
+
+scale(clock, 0, 12, 0, 360)
+
+Converte horas (0-12) para graus (0-360°)
+
+Se são 3 horas → 90° (3/12 * 360 = 90°)
+Se são 6 horas → 180° (6/12 * 360 = 180°)
+
+Para os ponteiros dos minutos/segundos:
+
+scale(minutes, 0, 60, 0, 360)
+
+Converte minutos/segundos (0-60) para graus (0-360°)
+
+Se são 15 minutos → 90° (15/60 * 360 = 90°)
+Se são 30 segundos → 180° (30/60 * 360 = 180°)
+
+Exemplo prático:
+
+Se agora são 15 minutos, a função calcula:
+((15 - 0) * (360 - 0)) / (60 - 0) + 0 = (15 * 360) / 60 = 90°
